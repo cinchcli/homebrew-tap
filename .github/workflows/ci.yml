@@ -10,7 +10,7 @@ jobs:
   brew-style:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
@@ -24,7 +24,7 @@ jobs:
   brew-audit:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
