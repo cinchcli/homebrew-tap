@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  brew-style:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Style check
+        run: brew style --tap "$PWD"
+
+  # Audit runs against any non-placeholder SHA cask/formula.
+  # Until the first desktop release replaces the placeholder hashes,
+  # cinch-desktop is intentionally skipped (audit would fail on bogus SHA).
+  brew-audit:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Audit casks (skip those with placeholder SHA)
+        run: |
+          shopt -s nullglob
+          for f in Casks/*.rb; do
+            if grep -q "REPLACE_.*_SHA" "$f"; then
+              echo "Skipping $f (placeholder SHA)"
+              continue
+            fi
+            name="$(basename "$f" .rb)"
+            brew audit --cask --tap "$PWD" "$name"
+          done
+
+      - name: Audit formulas
+        run: |
+          shopt -s nullglob
+          for f in Formula/*.rb; do
+            name="$(basename "$f" .rb)"
+            brew audit --formula --tap "$PWD" "$name"
+          done

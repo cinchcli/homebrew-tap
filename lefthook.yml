@@ -1,0 +1,14 @@
+# Lefthook config — git hooks for cinchcli/homebrew-tap
+# Install: brew install lefthook && lefthook install
+#
+# Note: Most updates to Formula/cinch.rb and Casks/cinch-desktop.rb come
+# from automated bot commits (GoReleaser + desktop-release.yml). These
+# hooks help catch syntax errors when humans touch these files manually.
+
+pre-commit:
+  parallel: true
+  commands:
+    brew-style:
+      glob: "{Formula/*.rb,Casks/*.rb}"
+      run: brew style {staged_files}
+      fail_text: "Run: brew style --fix <file>"
