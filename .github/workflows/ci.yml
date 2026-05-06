@@ -16,7 +16,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: Style check
-        run: brew style --tap "$PWD"
+        run: brew style Formula/*.rb Casks/*.rb
 
   # Audit runs against any non-placeholder SHA cask/formula.
   # Until the first desktop release replaces the placeholder hashes,
@@ -29,6 +29,9 @@ jobs:
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
+      - name: Tap local checkout
+        run: brew tap --custom-remote cinchcli/tap "$PWD"
+
       - name: Audit casks (skip those with placeholder SHA)
         run: |
           shopt -s nullglob
@@ -38,7 +41,7 @@ jobs:
               continue
             fi
             name="$(basename "$f" .rb)"
-            brew audit --cask --tap "$PWD" "$name"
+            brew audit --cask "cinchcli/tap/$name"
           done
 
       - name: Audit formulas
@@ -46,5 +49,5 @@ jobs:
           shopt -s nullglob
           for f in Formula/*.rb; do
             name="$(basename "$f" .rb)"
-            brew audit --formula --tap "$PWD" "$name"
+            brew audit --formula "cinchcli/tap/$name"
           done

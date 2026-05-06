@@ -1,5 +1,5 @@
 class Cinch < Formula
-  desc "Remote clipboard tool. Push from SSH, pull to local."
+  desc "Remote clipboard tool. Push from SSH, pull to local"
   homepage "https://cinchcli.com"
   version "0.1.1"
   license "AGPL-3.0"

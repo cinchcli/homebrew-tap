@@ -8,7 +8,7 @@ cask "cinch-desktop" do
   url "https://github.com/cinchcli/desktop/releases/download/desktop-v#{version}/Cinch_#{version}_#{arch}.dmg"
   name "Cinch"
   desc "Remote clipboard desktop app"
-  homepage "https://cinchcli.com"
+  homepage "https://cinchcli.com/"
 
   depends_on formula: "cinch"
   depends_on macos: ">= :big_sur"
@@ -17,7 +17,7 @@ cask "cinch-desktop" do
 
   zap trash: [
     "~/Library/Application Support/me.jinmu.cinch",
-    "~/Library/Preferences/me.jinmu.cinch.plist",
     "~/Library/Caches/me.jinmu.cinch",
+    "~/Library/Preferences/me.jinmu.cinch.plist",
   ]
 end
