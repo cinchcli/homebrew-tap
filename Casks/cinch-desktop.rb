@@ -1,11 +1,8 @@
 cask "cinch-desktop" do
-  arch arm: "aarch64", intel: "84ea05e4637a533783d6124e6c7859265e32ab95ea75cb2741c5b571a1eb78ee"
-
   version "0.1.2"
-  sha256 arm:   "b5bf3d5ca112bcbcb4c5bcf53a7eeb26e7948e4ff58014d1581b5722cc2e40bc",
-         intel: "84ea05e4637a533783d6124e6c7859265e32ab95ea75cb2741c5b571a1eb78ee"
+  sha256 "b5bf3d5ca112bcbcb4c5bcf53a7eeb26e7948e4ff58014d1581b5722cc2e40bc"
 
-  url "https://github.com/cinchcli/desktop/releases/download/desktop-v#{version}/Cinch_#{version}_#{arch}.dmg",
+  url "https://github.com/cinchcli/desktop/releases/download/desktop-v#{version}/Cinch_#{version}_aarch64.dmg",
       verified: "github.com/cinchcli/desktop/"
   name "Cinch"
   desc "Remote clipboard desktop app"
@@ -13,6 +10,7 @@ cask "cinch-desktop" do
 
   depends_on formula: "cinch"
   depends_on macos: ">= :big_sur"
+  depends_on arch: :arm64
 
   app "Cinch.app"
 
