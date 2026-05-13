@@ -1,6 +1,6 @@
 cask "cinch-desktop" do
-  version "0.1.2"
-  sha256 "b5bf3d5ca112bcbcb4c5bcf53a7eeb26e7948e4ff58014d1581b5722cc2e40bc"
+  version "0.1.3"
+  sha256 "6ad461e5802e1c5c204c7ab55aebc6f6422c6e9372b288dc89bf3d4014539772"
 
   url "https://github.com/cinchcli/desktop/releases/download/desktop-v#{version}/Cinch_#{version}_aarch64.dmg",
       verified: "github.com/cinchcli/desktop/"
