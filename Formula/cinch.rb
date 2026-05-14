@@ -1,13 +1,13 @@
 class Cinch < Formula
   desc "Remote clipboard tool. Push from SSH, pull to local"
   homepage "https://cinchcli.com"
-  version "0.1.4"
+  version "0.1.5"
   license "AGPL-3.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/cinchcli/cinch/releases/download/v0.1.4/cinch_Darwin_arm64.tar.gz"
-      sha256 "21a4b07f5456452cc56208b92498d019635c391048aff3afe58cee874311b8a3"
+      url "https://github.com/cinchcli/cinch/releases/download/v0.1.5/cinch_Darwin_arm64.tar.gz"
+      sha256 "456630a26a08247ef72c5d3eb5fb3c036c1cfa174764293374290a4302584347"
     else
       odie "Cinch does not publish macOS x86_64 builds. Use an Apple Silicon Mac or install the Linux/Windows build."
     end
@@ -15,11 +15,11 @@ class Cinch < Formula
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/cinchcli/cinch/releases/download/v0.1.4/cinch_Linux_arm64.tar.gz"
-      sha256 "eb7ebb4c5c4ee7943d3bdf9127be1728f05f4c0e08921e9eef21c77aaf5135ce"
+      url "https://github.com/cinchcli/cinch/releases/download/v0.1.5/cinch_Linux_arm64.tar.gz"
+      sha256 "d85d1f2b59962f95b6bdf0b08ad84ea250fcf08fc27963a2d5a193f9d58dc097"
     else
-      url "https://github.com/cinchcli/cinch/releases/download/v0.1.4/cinch_Linux_x86_64.tar.gz"
-      sha256 "d6ab421fc09eb88e8e613ecb1be325c1acead1a60211b2d7c24c6626f9995185"
+      url "https://github.com/cinchcli/cinch/releases/download/v0.1.5/cinch_Linux_x86_64.tar.gz"
+      sha256 "b76b1756f0541b35c99ec65998d7f5276b53ca8bfa7cebbd384dff750fe6cd53"
     end
   end
 
