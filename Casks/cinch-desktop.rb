@@ -9,7 +9,7 @@ cask "cinch-desktop" do
   homepage "https://cinchcli.com/"
 
   depends_on formula: "cinch"
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
   depends_on arch: :arm64
 
   app "Cinch.app"
