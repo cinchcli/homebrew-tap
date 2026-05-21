@@ -16,7 +16,9 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@main
 
       - name: Style check
-        run: brew style Formula/*.rb Casks/*.rb
+        # FormulaAudit/Conflicts cop crashes on Formula/cinch.rb (Homebrew/brew
+        # rubocop bundle bug, reports "no offenses" but exits 1). Exclude it.
+        run: brew style --except-cops FormulaAudit/Conflicts Formula/*.rb Casks/*.rb
 
   # Audit runs against any non-placeholder SHA cask/formula.
   # Until the first desktop release replaces the placeholder hashes,

@@ -33,6 +33,6 @@ class Cinch < Formula
   end
 
   test do
-    system "#{bin}/cinch", "--version"
+    system bin/"cinch", "--version"
   end
 end
