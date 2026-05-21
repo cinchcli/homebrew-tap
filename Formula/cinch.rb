@@ -23,6 +23,9 @@ class Cinch < Formula
     end
   end
 
+  conflicts_with cask:    "cinch",
+                 because: "the cask provides a `cinch` symlink via the desktop app's embedded CLI"
+
   def install
     bin.install "cinch"
     generate_completions_from_executable(bin/"cinch", "completion",
