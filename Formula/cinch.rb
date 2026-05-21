@@ -1,8 +1,10 @@
 class Cinch < Formula
   desc "Remote clipboard tool. Push from SSH, pull to local"
   homepage "https://cinchcli.com"
-  version "0.3.1"
   license "AGPL-3.0"
+  # `version` is intentionally omitted — Homebrew parses it from the
+  # `release/<X.Y.Z>/` path segment in `url`. `brew audit` errors with
+  # "version X is redundant with version scanned from URL" if both are set.
 
   on_macos do
     if Hardware::CPU.arm?
