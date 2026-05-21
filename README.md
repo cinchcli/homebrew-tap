@@ -7,17 +7,30 @@ Homebrew tap for [Cinch](https://cinchcli.com) — remote clipboard for develope
 ```bash
 brew tap cinchcli/tap
 
-brew install cinch                    # CLI only
-brew install --cask cinch-desktop     # Desktop app (auto-installs CLI)
+brew install --cask cinch    # Desktop app for macOS, with embedded `cinch` CLI on PATH
+brew install cinch           # CLI only (also works on Linux)
 ```
 
 Or in one line:
 
 ```bash
-brew install --cask cinchcli/tap/cinch-desktop
+brew install --cask cinchcli/tap/cinch     # desktop (includes CLI)
+brew install cinchcli/tap/cinch            # CLI only
 ```
+
+The Cask and the Formula `conflict_with` each other — pick one. Most macOS
+users want the Cask; servers and Linux machines want the Formula.
 
 ## About
 
-- **Formula `cinch`** — CLI tool (`cinch push` / `cinch pull`). Auto-updated by GoReleaser on each `cinchcli/cinch` release.
-- **Cask `cinch-desktop`** — Tauri desktop app for macOS. Auto-updated by the `cinchcli/desktop` release workflow. Installing the cask automatically installs the CLI formula.
+- **Cask `cinch`** — Tauri desktop app for macOS (Apple Silicon). On install,
+  Homebrew also links a `cinch` shim onto PATH so the CLI works from any shell —
+  the same binary serves both routes (the GUI app when launched as `Cinch`, the
+  CLI when invoked as `cinch`).
+- **Formula `cinch`** — Standalone CLI for headless macOS, Linux, and any
+  environment where the desktop app isn't applicable.
+
+Both are auto-bumped by [`cinchcli/cinch`](https://github.com/cinchcli/cinch)'s
+unified release workflow (`.github/workflows/publish.yml`). There is no separate
+desktop repository anymore — the entire toolchain (CLI, desktop, shared client
+library) lives in [`cinchcli/cinch`](https://github.com/cinchcli/cinch).
