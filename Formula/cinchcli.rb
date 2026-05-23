@@ -1,4 +1,4 @@
-class Cinch < Formula
+class Cinchcli < Formula
   desc "Remote clipboard tool. Push from SSH, pull to local"
   homepage "https://cinchcli.com"
   license "AGPL-3.0"
@@ -25,7 +25,7 @@ class Cinch < Formula
     end
   end
 
-  conflicts_with cask:    "cinch",
+  conflicts_with cask:    "cinchcli",
                  because: "the cask provides a `cinch` symlink via the desktop app's embedded CLI"
 
   def install
