@@ -1,4 +1,4 @@
-cask "cinch" do
+cask "cinchcli" do
   version "0.3.3"
   sha256 "98024b2466b876d9905b965ec484e32bb2f590ed1417387204e0b2aba090406b"
 
