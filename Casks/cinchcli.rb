@@ -16,6 +16,8 @@ cask "cinchcli" do
   # rename. Same physical binary as the desktop .app; dispatch on argv[0]
   # basename - see apps/desktop/CLAUDE.md "CLI Embedding" in cinchcli/cinch.
   binary "#{appdir}/Cinch.app/Contents/MacOS/Cinch", target: "cinch"
+  # `ci` short alias — same embedded CLI binary, dispatched on argv[0].
+  binary "#{appdir}/Cinch.app/Contents/MacOS/Cinch", target: "ci"
 
   zap trash: [
     "~/Library/Application Support/me.jinmu.cinch",
