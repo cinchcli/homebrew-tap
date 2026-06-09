@@ -33,10 +33,17 @@ class Cinchcli < Formula
     generate_completions_from_executable(bin/"cinch", "completion",
                                          shells: [:bash, :zsh, :fish])
 
-    # `ci` is a short alias for `cinch`. Create it only when the slot is free,
-    # so a pre-existing `ci` (e.g. RCS check-in) never blocks `brew link` and
-    # leaves cinch itself unlinked.
-    unless File.exist?("#{HOMEBREW_PREFIX}/bin/ci")
+    # `ci` is a short alias for `cinch`. Re-create our own `ci` (it resolves
+    # into this formula's Cellar) so the alias survives `brew upgrade` — the
+    # old version's `ci` is still linked while this install runs, so a plain
+    # `File.exist?` guard would skip it and the alias would vanish. Skip only
+    # when a *foreign* `ci` owns the slot (e.g. another formula), so we never
+    # block `brew link` and leave cinch itself unlinked.
+    ci_link = Pathname.new("#{HOMEBREW_PREFIX}/bin/ci")
+    cinchcli_cellar = Pathname.new(HOMEBREW_CELLAR)/"cinchcli"
+    ci_is_ours = ci_link.exist? && cinchcli_cellar.exist? &&
+                 ci_link.realpath.to_s.start_with?("#{cinchcli_cellar.realpath}/")
+    if !ci_link.exist? || ci_is_ours
       bin.install_symlink "cinch" => "ci"
       generate_completions_from_executable(bin/"ci", "completion",
                                          shells:    [:bash, :zsh, :fish],
