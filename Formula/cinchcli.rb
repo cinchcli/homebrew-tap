@@ -32,9 +32,20 @@ class Cinchcli < Formula
     bin.install "cinch"
     generate_completions_from_executable(bin/"cinch", "completion",
                                          shells: [:bash, :zsh, :fish])
+
+    # `ci` is a short alias for `cinch`. Create it only when the slot is free,
+    # so a pre-existing `ci` (e.g. RCS check-in) never blocks `brew link` and
+    # leaves cinch itself unlinked.
+    unless File.exist?("#{HOMEBREW_PREFIX}/bin/ci")
+      bin.install_symlink "cinch" => "ci"
+      generate_completions_from_executable(bin/"ci", "completion",
+                                         shells:    [:bash, :zsh, :fish],
+                                         base_name: "ci")
+    end
   end
 
   test do
     system bin/"cinch", "--version"
+    system bin/"ci", "--version" if (bin/"ci").exist?
   end
 end
