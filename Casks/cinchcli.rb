@@ -1,6 +1,6 @@
 cask "cinchcli" do
-  version "0.11.2"
-  sha256 "ffd6f3205396f52d02b52b75da22a73a7bd1d2ef8b78751860fd9d1509eb65e9"
+  version "0.11.3"
+  sha256 "b1e4ad49a74633e51f6605549332fdef00a7c7a021c396e545e1b884a102ce3f"
 
   url "https://github.com/cinchcli/cinch/releases/download/release/#{version}/Cinch_#{version}_aarch64.dmg",
       verified: "github.com/cinchcli/cinch/"
