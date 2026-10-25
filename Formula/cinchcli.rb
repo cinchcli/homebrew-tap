@@ -8,8 +8,8 @@ class Cinchcli < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/cinchcli/cinch/releases/download/release/0.12.1/cinch-cli-aarch64-apple-darwin.tar.gz"
-      sha256 "0805950d98ed26fe3237ca8a8635d2545ee88fe3c29ef6928754c1b379561e04"
+      url "https://github.com/cinchcli/cinch/releases/download/release/0.12.2/cinch-cli-aarch64-apple-darwin.tar.gz"
+      sha256 "ba0c4c921692897f9b5a8928a8a2ff12a70c06a345e8d399e577846d57a28916"
     else
       odie "Cinch does not publish macOS x86_64 builds. Use an Apple Silicon Mac or install the Linux/Windows build."
     end
@@ -17,11 +17,11 @@ class Cinchcli < Formula
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/cinchcli/cinch/releases/download/release/0.12.1/cinch-cli-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "425769343da60a2e7f2aa3601eeea073427ea97ea3501067924441b779bf6d96"
+      url "https://github.com/cinchcli/cinch/releases/download/release/0.12.2/cinch-cli-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "bffb6712d22240b3cf6b30236606d68f3af425eaa291f32d44606eb17ffae03e"
     else
-      url "https://github.com/cinchcli/cinch/releases/download/release/0.12.1/cinch-cli-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "55e682c946f39208bc09a7a3fa26f319cac015c847918953d712d92858af6055"
+      url "https://github.com/cinchcli/cinch/releases/download/release/0.12.2/cinch-cli-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "0d0cb36b1e7680e1f4aead55f429a38524ead446016e4abff7ccb295fddf11ee"
     end
   end
 
